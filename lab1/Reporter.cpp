@@ -2,18 +2,12 @@ include <windows.h>
 #include <iostream>
 #include <fstream>
 #include <list>
-
+#include "employee.h"
 
 #pragma warning(disable : 4996)
 
 using namespace std;
 
-struct Employee
-{
-	int num;
-	char name[10];
-	double hours;
-};
 
 list<Employee> readEmployees(char* fileName) {
 	ifstream in;
