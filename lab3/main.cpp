@@ -8,7 +8,7 @@
 HANDLE threadStartEv, currTh;
 std::vector<HANDLE> thEvents;
 CRITICAL_SECTION CriticalS;
-const int timeMs = 5;
+const int &timeMs = 5;
 
 UINT WINAPI marker(void *p) {
     threadArgs* p_ = static_cast<threadArgs*>(p);
