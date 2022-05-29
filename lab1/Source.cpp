@@ -2,14 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include "employee.h"
-using namespace std;
-
-struct Employee
-{
-	int num;
-	char name[10];
-	double hours;
-};
 
 int main(int argc, char* argv[])
 {
@@ -23,14 +15,14 @@ int main(int argc, char* argv[])
 	for (int i = 0; i < num; i++)
 	{
 		Employee employee;
-		cout << "Enter employee number:\n";
-		cin >> employee.num;
+		std::cout << "Enter employee number:\n";
+		std::cin >> employee.num;
 
-		cout << "Enter employee name:\n";
-		cin >> employee.name;
+		std::cout << "Enter employee name:\n";
+		std::cin >> employee.name;
 
-		cout << "Enter employee hours:\n";
-		cin >> employee.hours;
+		std::cout << "Enter employee hours:\n";
+		std::cin >> employee.hours;
 
 		out.write((char*)&employee, sizeof(struct Employee));
 	}
