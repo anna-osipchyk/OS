@@ -2,7 +2,7 @@
 #include<windows.h>
 #include <fstream>
 
-const int messageSize = 20;
+const int &messageSize = 20;
 const double INF = INFINITE;
 
 void sendMessage(std::ofstream &out, std::string message, std::string fileName){
@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
         std::cout << "Input message: ";
 
         std::string message;
-        while(1){
+        while(true){
             std::cin >> message;
             message += '\n';
 
