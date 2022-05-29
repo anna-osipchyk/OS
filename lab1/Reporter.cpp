@@ -6,7 +6,8 @@ include <windows.h>
 
 #pragma warning(disable : 4996)
 
-using namespace std;
+//C4996 is generated for the line on which the function is declared and for the line on which the function is used.
+//Some CRT functions have been deprecated in favor of new, more secure functions.
 
 
 list<Employee> readEmployees(char* fileName) {
