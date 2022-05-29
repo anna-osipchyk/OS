@@ -3,17 +3,11 @@
 #include <conio.h>
 #include <string>
 #include <windows.h>
+#include "employee.h"
 #pragma warning(disable: 4996)
 
 using namespace std;
 
-//структура из условия
-struct Employee
-{
-	int num;
-	char name[10];
-	double hours;
-};
 //создание файла
 char* getData1(char* binary, int n) {
 	char data[200] = "Creator.exe ";
