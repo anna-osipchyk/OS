@@ -3,14 +3,7 @@
 #include <boost/thread.hpp>
 #include <boost/random.hpp>
 #include <boost/chrono.hpp>
-
-struct Args {
-	int* arr;
-	int size;
-	int maxInd;
-	int minInd;
-	int avg;
-};
+#include "args.h"
 
 void min_max(Args* args) {
 	int n = args->size;
