@@ -5,7 +5,7 @@
 #include <string>
 
 HANDLE *readyEvents;
-const int messageSize = 20;
+const int &messageSize = 20;
 const double INF = INFINITE;
 
 int CreateSenders(int sendersCount, std::string fileName){
@@ -116,7 +116,7 @@ int main() {
     char tmp[messageSize];
     char message[messageSize];
 
-    while(1){
+    while(true){
 
         std::cin >> tmp;
 
