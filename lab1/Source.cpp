@@ -1,7 +1,7 @@
 #include <windows.h>
 #include <iostream>
 #include <fstream>
-
+#include "employee.h"
 using namespace std;
 
 struct Employee
