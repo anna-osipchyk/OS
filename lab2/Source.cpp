@@ -5,7 +5,7 @@
 #include "array.h"
 
 
-DWORD WINAPI min_max(void * _arr, int size) {
+DWORD WINAPI min_max(void* _arr, int size) {
 	myArray* array = static_cast<myArray*>(_arr);
 	int min = arr[0];
 	int max = arr[0];
@@ -24,7 +24,7 @@ DWORD WINAPI min_max(void * _arr, int size) {
 	return 0;
 }
 
-DWORD WINAPI average(void * _arr) {
+DWORD WINAPI average(void* _arr) {
 myArray* array = static_cast<myArray*>(_arr);
 	int sum = 0;
 	for (int i = 0; i < _size; i++) {
@@ -51,7 +51,7 @@ int main() {
 
 	std::cout << "Enter size of array:\n";
 	cin >> size;
-	myArray *arr = new int[size];
+	myArray* arr = new int[size];
 	array->storage = new int[size];
     	array->size = size;
 	cout << "Enter elements of array:\n";
