@@ -4,8 +4,8 @@
 #include <string>
 #include "../employee.h"
 
-const int COMMAND_LENGTH = 12;
-const int MS_PIPE_WAIT = 2000;
+const& int COMMAND_LENGTH = 12;
+const& int MS_PIPE_WAIT = 2000;
 const std::string IP_NAME = "START_ALL";
 const std::string PIPE_NAME = "\\\\.\\pipe\\pipe_name";
 
@@ -82,7 +82,7 @@ int main(int argc, char** argv) {
     HANDLE handleReadyEvent = OpenEvent(EVENT_MODIFY_STATE, FALSE, argv[1]);
     HANDLE handleStartEvent = OpenEvent(SYNCHRONIZE, FALSE, IP_NAME.c_str());
 
-    if(handleStartEvent == NULL || handleReadyEvent == NULL){
+    if(NULL == handleStartEvent || NULL == handleReadyEvent){
         std::cerr << "Error in action with event...\n";
         getch();
         return GetLastError();
@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
 
     std::cout << "Process is started.\n";
 
-    while(1) {
+    while(true) {
         handlePipe = CreateFile(PIPE_NAME.c_str(), GENERIC_WRITE | GENERIC_READ,
                                 FILE_SHARE_READ, NULL,
                            OPEN_EXISTING, 0, NULL);
