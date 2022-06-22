@@ -35,11 +35,11 @@ void runCreatorProcess(char data[]) {
 }
 
 //чтение из бинарного файла
-void readFile(char * fileName) {
+void readFile(char* fileName) {
 	ifstream in;
 	in.open(fileName, ios::binary);
 	cout << "Employees: \n";
-	while (in.peek() != EOF) {
+	while (EOF != in.peek()) {
 		Employee employee;
 		in.read((char*)&employee, sizeof(Employee));
 		std::cout << "Employee number:\n" << employee.num << "\nEmployee name:\n" << employee.name << "\nEmployee hours:\n" << employee.hours << "\n\n";
@@ -48,7 +48,7 @@ void readFile(char * fileName) {
 }
 
 //получение данных для репортера
-char * get_binary_data_for_reporter(char* binaryFile, char* fileName, int pay) {
+char* get_binary_data_for_reporter(char* binaryFile, char* fileName, int pay) {
 	char data[100] = "Reporter.exe ";
 	strcat(data, binaryFile);
 	strcat(data, " ");
