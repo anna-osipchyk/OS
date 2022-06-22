@@ -1,5 +1,3 @@
-#ifndef LAB_3_THREAD_H
-#define LAB_3_THREAD_H
 struct threadArgs{
     int* arr;
     int n;
@@ -14,4 +12,3 @@ struct threadArgs{
         actions[1] = CreateEvent(NULL, FALSE, FALSE, NULL);
     }
 };
-#endif //LAB_3_THREAD_H
