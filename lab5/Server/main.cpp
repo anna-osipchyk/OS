@@ -13,12 +13,12 @@ int empCount;
 employee* emps;
 HANDLE* handleReadyEvents;
 CRITICAL_SECTION empsCS;
-bool *empIsModifying;
+bool* empIsModifying;
 int employeeSize = sizeof(employee);
 
 const std::string pipeName = "\\\\.\\pipe\\pipe_name";
-const int BUFF_LENGTH = 10;
-const int MESSAGE_LENGTH = 10;
+const& int BUFF_LENGTH = 10;
+const& int MESSAGE_LENGTH = 10;
 char buff[BUFF_LENGTH];
 
 int generateCountOfClient() {
@@ -100,7 +100,7 @@ DWORD WINAPI messaging(LPVOID p){
         bool isRead = ReadFile(hPipe, message,
                                MESSAGE_LENGTH, &readBytes, NULL);
 
-        if(isRead == false){
+        if(false == isRead){
             if(ERROR_BROKEN_PIPE == GetLastError()){
                 std::cout << "Client disconnected." << std::endl;
             }
@@ -142,7 +142,7 @@ DWORD WINAPI messaging(LPVOID p){
             }
             bool isSent = WriteFile(hPipe, empToSend,
                                     employeeSize, &bytesWritten, NULL);
-            if(isSent == true) {
+            if(true == isSent) {
                 std::cout << "Answer is sent.\n";
             }
             else {
@@ -152,7 +152,7 @@ DWORD WINAPI messaging(LPVOID p){
             if(empToSend != errorEmp && 'w' == command){
                 isRead = ReadFile(hPipe, empToSend,
                                   employeeSize, &readBytes, NULL);
-                if(isRead == false){
+                if(false == isRead){
                     std::cerr << "Error in reading a message." << std::endl;
                     break;
                 }
