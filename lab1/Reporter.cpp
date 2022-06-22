@@ -18,9 +18,7 @@ list<Employee> readEmployees(char* fileName) {
 	while (EOF != n.peek())
 	{
 		Employee employee;
-		in >> employee.num;
-		in >> employee.name;
-		in >> employee.hours;
+		in.read((char*)&employee, sizeof(Employee));
 		employees.push_back(employee);
 	}
 
