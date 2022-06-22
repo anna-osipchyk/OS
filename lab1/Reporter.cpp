@@ -15,10 +15,12 @@ list<Employee> readEmployees(char* fileName) {
 	in.open(fileName, ios::binary);
 	list<Employee> employees;
 
-	while (in.peek() != EOF)
+	while (EOF != n.peek())
 	{
 		Employee employee;
-		in.read((char*)&employee, sizeof(Employee));
+		in >> employee.num;
+		in >> employee.name;
+		in >> employee.hours;
 		employees.push_back(employee);
 	}
 
