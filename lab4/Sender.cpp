@@ -3,7 +3,6 @@
 #include <fstream>
 
 const int &messageSize = 20;
-const double INF = INFINITE;
 
 void sendMessage(std::ofstream &out, std::string message, std::string fileName){
     out.open(fileName.c_str(), std::ios::binary | std::ios::app);
@@ -21,7 +20,7 @@ int main(int argc, char** argv) {
                                       nameOfEvent.c_str());
         HANDLE StartAll = OpenEvent(SYNCHRONIZE, 0, "START_ALL");
 
-        if (ReadyEvent == NULL || StartAll == NULL) {
+        if (NULL == ReadyEvent || NULL == StartAll) {
             std::cout << "Open event has been failed.\n";
             return GetLastError();
         }
@@ -32,7 +31,7 @@ int main(int argc, char** argv) {
 
         HANDLE fileMutex = OpenMutex(SYNCHRONIZE, 0, "FILE_ACCESS");
 
-        if(fileMutex == NULL){
+        if(NULL == fileMutex){
             std::cout << "Open mutex has been failed.\n";
 
             return GetLastError();
@@ -43,11 +42,11 @@ int main(int argc, char** argv) {
         HANDLE mesReadEvent = OpenEvent(EVENT_ALL_ACCESS, 0,
                                         "MESSAGE_READ");
 
-        if (senderSemaphore == NULL || mesReadEvent == NULL) {
+        if (NULL == senderSemaphore || NULL == mesReadEvent) {
             return GetLastError();
         }
 
-        WaitForSingleObject(StartAll, INF);
+        WaitForSingleObject(StartAll, INFINITE);
 
         std::cout << "Input message: ";
 
@@ -56,15 +55,15 @@ int main(int argc, char** argv) {
             std::cin >> message;
             message += '\n';
 
-            if(std::cin.eof() == false) {
-                WaitForSingleObject(fileMutex, INF);
+            if(false == std::cin.eof()) {
+                WaitForSingleObject(fileMutex, INFINITE);
                 sendMessage(out, message.c_str(), fileName);
                 ReleaseMutex(fileMutex);
 
                 if(ReleaseSemaphore(senderSemaphore, 1, NULL) != 1){
                     std::cout << "Message file is full. Waiting for receiver.\n";
                     ResetEvent(mesReadEvent);
-                    WaitForSingleObject(mesReadEvent, INF);
+                    WaitForSingleObject(mesReadEvent, INFINITE);
                     ReleaseSemaphore(senderSemaphore, 1, NULL);
                 }
                 std::cout << "Message has been sent.\n";
