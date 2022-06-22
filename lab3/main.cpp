@@ -10,7 +10,7 @@ std::vector<HANDLE> thEvents;
 CRITICAL_SECTION CriticalS;
 const int &timeMs = 5;
 
-UINT WINAPI marker(void *p) {
+UINT WINAPI marker(void* p) {
     threadArgs* p_ = static_cast<threadArgs*>(p);
     WaitForSingleObject(threadStartEv, INFINITE);
     std::cout << "Start " << p_->num << " thread.";
@@ -60,7 +60,7 @@ int main() {
     std::cout << "Input size of array: ";
     int size;
     std::cin >> size;
-    int *arr = new int[size];
+    int* arr = new int[size];
 
     for(int i = 0; i < size; i = -~i) {
         arr[i] = 0;
