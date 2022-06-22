@@ -23,7 +23,8 @@ int main(int argc, char* argv[])
 
 		std::cout << "Enter employee hours:\n";
 		std::cin >> employee.hours;
-		out << emoloyee.num << " " << employee.name << " " << employee.hours << "\n";
+		out.write((char*)&employee, sizeof(Employee));
+
 	}
 
 	out.close();
